@@ -1,0 +1,24 @@
+import requests
+
+BASE_HEX_API_URL = 'https://app.hex.tech/api/v1'
+TOKEN = 'hxtw_e15b79011d5ea7e282ab90fdb619054b2bb5505abfba370b9ce6d32b50091826bdff701ffb720ade19090aeaccf10eca'
+PROJECT_ID = '019d259a-866e-7009-bf82-f206140be0fe'
+body = {
+  "hexUserAttributes": {
+    "userId": "12345",
+    "brand_name": "Sony",
+    "region": "MEX"
+  },
+  "scope": ["EXPORT_PDF", "EXPORT_CSV"],
+  "expiresIn": 30000,
+  "displayOptions": {
+    "noEmbedFooter": True,
+    "noEmbedOutline": True,
+    "noEmbedBasePadding": True
+  }
+}
+response = requests.post(
+url=f"{BASE_HEX_API_URL}/embedding/createPresignedUrl/{PROJECT_ID}",
+json=body, headers={"Authorization" : f"Bearer {TOKEN}"}
+)
+print(response.json().get("url"))
