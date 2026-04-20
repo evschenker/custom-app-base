@@ -17,7 +17,7 @@ export function proxy(request: NextRequest) {
     object-src 'none';
     base-uri 'self';
     form-action 'self';
-    frame-ancestors https://dashboard.copilot.app/ https://*.copilot.app/ dashboard.assembly.com https://*.myassembly.com;
+    frame-ancestors https://dashboard.copilot.app/ https://*.copilot.app/ dashboard.assembly.com https://*.myassembly.com https://custom-app-base-neon.vercel.app/;
     block-all-mixed-content;
     upgrade-insecure-requests;
 `;
@@ -41,7 +41,7 @@ export function proxy(request: NextRequest) {
   });
   response.headers.set(
     'Content-Security-Policy',
-    "frame-ancestors https://dashboard.assembly.com https://*.copilot.app https://*.myassembly.com; frame-src https://app.hex.tech https://*.hex.tech;",
+    "frame-ancestors https://dashboard.assembly.com https://*.copilot.app https://*.myassembly.com https://custom-app-base-neon.vercel.app/; frame-src https://app.hex.tech https://*.hex.tech;",
   );
 
   return response;
