@@ -41,7 +41,7 @@ export function proxy(request: NextRequest) {
   });
   response.headers.set(
     'Content-Security-Policy',
-    contentSecurityPolicyHeaderValue,
+    "frame-ancestors https://dashboard.assembly.com https://*.copilot.app https://*.myassembly.com; frame-src https://app.hex.tech https://*.hex.tech;",
   );
 
   return response;
